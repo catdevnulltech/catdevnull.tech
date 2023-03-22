@@ -1,0 +1,31 @@
+baseURL = 'http://catdevnull.tech'
+languageCode = 'en-us'
+title = 'catdevnull.tech'
+theme = 'poison'
+
+menu = [
+        # Dict keys:
+            # Name:         The name to display on the menu.
+            # URL:          The directory relative to the content directory.
+            # HasChildren:  If the directory's files should be listed.  Default is true.
+            # Limit:        If the files should be listed, how many should be shown.
+
+        # SINGLE PAGE
+        # Note that you must put your markdown file 
+        # inside of a directory with the same name.
+
+        # Example:
+        # ... /content/about/about.md
+        {Name = "About", URL = "/about/", HasChildren = false},
+        
+        # LIST
+        # This example has a subheading of "Recent"
+        # and will display up to 5 items.
+
+        # Example:
+        # ... /content/posts/introducing-poison.md
+        {Name = "Posts", URL = "/posts/", Pre = "Recent", HasChildren = true, Limit = 5},
+
+        # Example of a list without a subheading or limit.
+        {Name = "Projects", URL = "/projects/"},
+    ]

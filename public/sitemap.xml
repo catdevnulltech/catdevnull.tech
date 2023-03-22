@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://catdevnull.tech/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>http://catdevnull.tech/about/</loc>
+    <priority>0</priority>
+  </url><url>
+    <loc>http://catdevnull.tech/homepage/about/</loc>
+  </url><url>
+    <loc>http://catdevnull.tech/categories/</loc>
+  </url><url>
+    <loc>http://catdevnull.tech/homepage/</loc>
+  </url><url>
+    <loc>http://catdevnull.tech/tags/</loc>
+  </url>
+</urlset>
