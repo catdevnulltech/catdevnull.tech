@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>catdevnull.tech</title>
-    <link>http://catdevnull.tech/</link>
-    <description>Recent content on catdevnull.tech</description>
+    <title></title>
+    <link>/</link>
+    <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://catdevnull.tech/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 Dec 2022 10:26:34 -0500</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
-      <link>http://catdevnull.tech/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Podman - A basic tutorial</title>
+      <link>/posts/podman_basics/</link>
+      <pubDate>Tue, 06 Dec 2022 10:26:34 -0500</pubDate>
       
-      <guid>http://catdevnull.tech/about/</guid>
-      <description>about link?</description>
+      <guid>/posts/podman_basics/</guid>
+      <description>Podman basics Podman is a container engine tool that provides a seamless and secure way to create, run, and manage containers and container images. Unlike other container engines, Podman does not require a daemon to be running in the background, which makes it a popular choice for devs and sys admins who want a lightweight and efficient container solution.
+Podman has several advantages over Docker that i will highlight here:</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://catdevnull.tech/homepage/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>About</title>
+      <link>/about/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://catdevnull.tech/homepage/about/</guid>
-      <description>This is an about page</description>
+      <guid>/about/about/</guid>
+      <description>About me and this site Hi there! My name is Paul Fischer and this would be a blog on all things Linux, containers and kubernetes. I have been working in the IT field since 1996 with much of my career dealing with data center network, server and storage infrastructure.</description>
     </item>
     
   </channel>

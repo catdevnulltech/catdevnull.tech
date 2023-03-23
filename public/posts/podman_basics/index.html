@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+    <script defer language="javascript" type="text/javascript" src="/js/light_dark.js"></script>
+<script defer language="javascript" type="text/javascript" src="/js/tabs.js"></script>
+
+
+<script defer language="javascript" type="text/javascript" src="/js/katex.min.js"></script>
+
+
+<script defer language="javascript" type="text/javascript" src="/js/auto-render.min.js"></script>
+
+
+<script defer language="javascript" type="text/javascript" src="/js/katex.js"></script>
+<script defer language="javascript" type="text/javascript" src="/js/toc.js"></script>
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    
+
+
+
+
+
+  
+ 
+
+ 
+
+
+  
+  
+  
+ 
+
+
+
+  
+
+
+
+<title itemprop="name">Podman a Basic Tutorial - </title>
+<meta property="og:title" content=Podman&#32;a&#32;Basic&#32;Tutorial&#32;-&#32; />
+<meta name="twitter:title" content=Podman&#32;a&#32;Basic&#32;Tutorial&#32;-&#32; />
+<meta itemprop="name" content=Podman&#32;a&#32;Basic&#32;Tutorial&#32;-&#32; />
+<meta name="application-name" content=Podman&#32;a&#32;Basic&#32;Tutorial&#32;-&#32; />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="/posts/podman_basics/" />
+<link rel="canonical" href="/posts/podman_basics/" itemprop="url" />
+<meta name="url" content="/posts/podman_basics/" />
+<meta name="twitter:url" content="/posts/podman_basics/" />
+<meta property="og:url" content="/posts/podman_basics/" />
+
+
+
+<meta itemprop="image" content="/images/base.jpeg" />
+<meta property="og:image" content="/images/base.jpeg" />
+<meta name="twitter:image" content="/images/base.jpeg" />
+<meta name="twitter:image:src" content="/images/base.jpeg" />
+
+
+
+<meta property="og:updated_time" content=6012-06-10T1226:34:22-0500 />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+ 
+
+
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="" />
+<meta property="og:article:published_time" content=6012-06-10T1226:34:22-0500 />
+<meta property="article:published_time" content=6012-06-10T1226:34:22-0500 />
+
+
+
+
+
+<script defer type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Podman - A basic tutorial",
+    "author": {
+      "@type": "Person",
+      "name": "https:\/\/github.com\/pfischer8989"
+    },
+    "datePublished": "2022-12-06",
+    "description": "",
+    "wordCount":  600 ,
+    "mainEntityOfPage": "True",
+    "dateModified": "2022-12-06",
+    "image": {
+      "@type": "imageObject",
+      "url": ""
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "",
+      "logo": {
+        "@type": "imageObject",
+        "url": ""
+      }
+    }
+  }
+</script>
+
+
+
+<meta name="generator" content="Hugo 0.110.0">
+
+
+    
+    <link type="text/css" rel="stylesheet" href="/css/poole.css">
+<link type="text/css" rel="stylesheet" href="/css/syntax.css">
+<link type="text/css" rel="stylesheet" href="/css/hyde.css">
+<link type="text/css" rel="stylesheet" href="/css/poison.css">
+<link type="text/css" rel="stylesheet" href="/css/fonts.css">
+<link type="text/css" rel="stylesheet" href="/css/katex.min.css">
+<link type="text/css" rel="stylesheet" href="/css/tabs.css">
+
+
+<link type="text/css" rel="stylesheet" href="/css/custom.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5a5a5a;
+        --link-color: #268bd2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #bf616a;
+        --code-background-color: #E5E5E5;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #eee;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9d9d9d;
+        --link-color: #268bd2;
+        --date-color: #9a9a9a;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #ff7f7f;
+        --code-background-color: #393D47;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="/">
+                <img src="/images/base.jpeg" alt="brand image">
+            </a>
+        
+        
+            <a href="/">
+                <h1>catdevnull.tech</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A blog about linux and other nerdy things
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+        
+        
+        
+        
+            
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+            
+        
+        
+            
+                
+            
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            Recent
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="/posts/podman_basics/">Podman - A basic tutorial</a>
+                            </li>
+                        
+                    
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" href="https://github.com/pfischer8989">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" href="https://www.linkedin.com/in/paul-fischer-1314171/?originalSubdomain=ca">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+    <a target="_blank" class="social" href="https://www.youtube.com/@catdevnulltech">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.006 19.012h-.02c-.062 0-6.265-.012-7.83-.437a2.5 2.5 0 0 1-1.764-1.765A26.494 26.494 0 0 1 1.986 12a26.646 26.646 0 0 1 .417-4.817A2.564 2.564 0 0 1 4.169 5.4c1.522-.4 7.554-.4 7.81-.4H12c.063 0 6.282.012 7.831.437c.859.233 1.53.904 1.762 1.763c.29 1.594.427 3.211.407 4.831a26.568 26.568 0 0 1-.418 4.811a2.51 2.51 0 0 1-1.767 1.763c-1.52.403-7.553.407-7.809.407Zm-2-10.007l-.005 6l5.212-3l-5.207-3Z"/>
+        </svg>
+    </a>
+
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2023 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+        <main class="content container">
+            <div class="post">
+  <div class="info">
+    <h1 class="post-title">
+        <a href="/posts/podman_basics/">Podman - A basic tutorial</a>
+    </h1>
+    <time datetime="2022-12-06T10:26:34-0500" class="post-date">
+        December 6, 2022
+    </time>
+    
+    
+    
+    
+    
+    
+</div>
+
+  <h2 id="podman-basics">Podman basics</h2>
+<p>Podman is a container engine tool that provides a seamless and secure way to create, run, and manage containers and container images. Unlike other container engines, Podman does not require a daemon to be running in the background, which makes it a popular choice for devs and sys admins who want a lightweight and efficient container solution.</p>
+<p>Podman has several advantages over Docker that i will highlight here:</p>
+<ul>
+<li>
+<p>No daemon requirement: Unlike Docker, Podman does not require a background daemon to be running in order to manage containers. This makes it easier to install and use, and also eliminates potential security vulnerabilities.</p>
+</li>
+<li>
+<p>Rootless mode: Podman allows users to run containers as non-root users, which enhances security and reduces the risk of privilege escalation attacks.</p>
+</li>
+<li>
+<p>Better integration with system tools: Podman integrates better with system tools such as systemd and SELinux, which makes it easier to manage containers in production environments.</p>
+</li>
+<li>
+<p>Support for Kubernetes: Podman provides native support for Kubernetes, which enables users to seamlessly switch between Kubernetes and Podman without needing to change their workflows.</p>
+</li>
+<li>
+<p>Improved performance: Podman has been shown to have better performance than Docker in some benchmark tests, especially in situations where large numbers of containers are being managed.</p>
+</li>
+</ul>
+<p>Overall, Podman&rsquo;s focus on security, simplicity, and performance make it a compelling alternative to Docker for container management.</p>
+<p>After that wonderful expliantion i am sure you are ready to dive in right!?! Great so how do i install and use it? Glad you asked!</p>
+<p>Podman installation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> sudo dnf install podman 
+</span></span></code></pre></div><p>Once podman is installed we can run a podman ps if any pods are running. You will need to make sure you are root to run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> podman ps 
+</span></span><span style="display:flex;"><span>CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+</span></span></code></pre></div><p>Ok nothing is running. So let&rsquo;s create a container and run it. Podman has the ability to build containers from an image specfication called a Containerfile ( Dockerfile will also work ).</p>
+<p>So let&rsquo;s build a SIMPLE container image using a UBI image.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> vi Containerfile 
+</span></span></code></pre></div><p>The contents of the file should look something like this;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FROM       ubi9/ubi:9.1
+</span></span><span style="display:flex;"><span>LABEL      description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Yet another ngnix container image&#34;</span>
+</span></span><span style="display:flex;"><span>MAINTAINER nulltech &lt;nulltech@catdevnull.tech&gt;
+</span></span><span style="display:flex;"><span>EXPOSE     <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>CMD        <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/bin/bash&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Once the Containerfile is created we can have podman build it. The -t switch is a tag so we can assign a name the image file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> podman build -t ubi9 .
+</span></span></code></pre></div><p>Once the build completes one can see the image using this command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> podman images
+</span></span><span style="display:flex;"><span>REPOSITORY                           TAG         IMAGE ID      CREATED         SIZE
+</span></span><span style="display:flex;"><span>localhost/ubi9                       latest      f46297cc8522  <span style="color:#ae81ff">47</span> seconds ago  <span style="color:#ae81ff">219</span> MB
+</span></span></code></pre></div><p>Now we simply need to run the image. The -dt allows the conatiner to run in the background and stay running.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> podman run -dt ubi9
+</span></span><span style="display:flex;"><span>86358abbc3f805d3356b9d6da78bc28e8372f4a1caa47df49ab819889a28c0c9
+</span></span></code></pre></div><p>Now if we check with ps we can see a running container image</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> podman ps
+</span></span><span style="display:flex;"><span>CONTAINER ID  IMAGE                  COMMAND     CREATED        STATUS            PORTS       NAMES
+</span></span><span style="display:flex;"><span>86358abbc3f8  localhost/ubi9:latest  /bin/bash   <span style="color:#ae81ff">9</span> seconds ago  Up <span style="color:#ae81ff">9</span> seconds ago              lucid_lederberg
+</span></span></code></pre></div><p>We can get into this image and have a look around like this. Using the -i here will make the command interactive.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span> podman exec -it lucid_lederberg /bin/bash
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@86358abbc3f8 /<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
+</span></span></code></pre></div><p>Running commands in the container would work as normal as long as the utility you are running has been included in the container itself.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@86358abbc3f8 /<span style="color:#f92672">]</span> ls
+</span></span><span style="display:flex;"><span>afs  bin  boot	dev  etc  home	lib  lib64  lost+found	media  mnt  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
+</span></span></code></pre></div><p>You can logout of the container by typing exit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@86358abbc3f8 /<span style="color:#f92672">]</span> exit
+</span></span><span style="display:flex;"><span>exit
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost ~<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>In the next post I will be digging into more complicated container builds.</p>
+
+  <hr>
+<div class="footer">
+    
+	    
+            
+        
+	    
+    
+</div>
+
+  <div class="article-toc " >
+    <h4></h4>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#podman-basics">Podman basics</a></li>
+  </ul>
+</nav>
+</div>
+
+</div>
+        </main>
+    </body>
+</html>

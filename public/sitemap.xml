@@ -2,18 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://catdevnull.tech/</loc>
-    <priority>0</priority>
+    <loc>/</loc>
+    <lastmod>2022-12-06T10:26:34-05:00</lastmod>
   </url><url>
-    <loc>http://catdevnull.tech/about/</loc>
-    <priority>0</priority>
+    <loc>/posts/podman_basics/</loc>
+    <lastmod>2022-12-06T10:26:34-05:00</lastmod>
   </url><url>
-    <loc>http://catdevnull.tech/homepage/about/</loc>
+    <loc>/posts/</loc>
+    <lastmod>2022-12-06T10:26:34-05:00</lastmod>
   </url><url>
-    <loc>http://catdevnull.tech/categories/</loc>
+    <loc>/about/</loc>
+    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://catdevnull.tech/homepage/</loc>
+    <loc>/about/about/</loc>
+    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://catdevnull.tech/tags/</loc>
+    <loc>/series/</loc>
+  </url><url>
+    <loc>/tags/</loc>
   </url>
 </urlset>

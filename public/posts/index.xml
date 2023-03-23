@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on </title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 Dec 2022 10:26:34 -0500</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Podman - A basic tutorial</title>
+      <link>/posts/podman_basics/</link>
+      <pubDate>Tue, 06 Dec 2022 10:26:34 -0500</pubDate>
+      
+      <guid>/posts/podman_basics/</guid>
+      <description>Podman basics Podman is a container engine tool that provides a seamless and secure way to create, run, and manage containers and container images. Unlike other container engines, Podman does not require a daemon to be running in the background, which makes it a popular choice for devs and sys admins who want a lightweight and efficient container solution.
+Podman has several advantages over Docker that i will highlight here:</description>
+    </item>
+    
+  </channel>
+</rss>
