@@ -6,13 +6,13 @@ draft: false
 
 With the release of podman 4.0 the networking backend has be rewritten in rust. Netavark and Ardavark are two tools that have been written to replace the CNI based networking stack in older versions of podman. 
 
-One of the wonderful things that netavark supports is multiple networks. This means we can map multiple networks into a container. This is exterememly useful in telecommunications and data center infrastructure where the need to connect to multiple networks becomes a nessesity. 
+One of the wonderful things that netavark supports is multiple networks. This means we can map multiple networks into a container. This is extremely useful in telecommunications and data center infrastructure where the need to connect to multiple networks becomes a necessity. 
 
 Lets explore how this works. 
 
-I have podman 4.4 installed in a RHEL 9 virtual machgine with two networks connected. 
+I have podman 4.4 installed in a RHEL 9 virtual machine with two networks connected. 
 
-```
+```bash
 [root@localhost ~] ip addr sho
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -45,11 +45,11 @@ I have podman 4.4 installed in a RHEL 9 virtual machgine with two networks conne
 
 ```
 
-enp1s0 and enp7s0 are the interfaces connected to each different network. The podman0 network is a bridge that is installed by deafult when podman is installed. 
+enp1s0 and enp7s0 are the interfaces connected to each different network. The podman0 network is a bridge that is installed by default when podman is installed. 
 
 First lets see what networks podman can see. 
 
-```
+```bash
 [root@localhost ~] podman network ls
 NETWORK ID    NAME        DRIVER
 2f259bab93aa  podman      bridge
@@ -58,14 +58,15 @@ NETWORK ID    NAME        DRIVER
 
 Let's create two networks in podman and link them to the interfaces the server has.
 
-```
+```bash
 podman network create -d macvlan -o parent=enp1s0 --subnet 10.10.100.0/24 netone
 podman network create -d macvlan -o parent=enp7s0 --subnet 10.10.110.0/24 nettwo
 
 ```
 
 We can see the networks have been created with podman network ls 
-```
+
+```bash
 [root@localhost ~]# podman network ls
 NETWORK ID    NAME        DRIVER
 fdd5ce0ff2be  netone      macvlan
@@ -75,24 +76,21 @@ fdd5ce0ff2be  netone      macvlan
 
 So let's get a container up and running and connect the networks. 
 
-```
+```bash
 [root@localhost ~] podman run -dt ubi9
 [root@localhost ~] podman ps
 CONTAINER ID  IMAGE                  COMMAND     CREATED        STATUS            PORTS       NAMES
 0a05716b8f5c  localhost/ubi9:latest  /bin/bash   4 seconds ago  Up 3 seconds ago              hungry_chaplygin
 ```
 
-
-
-
-```
+```bash
 [root@localhost ~] podman network connect --ip 10.10.110.81 nettwo hungry_chaplygin
 [root@localhost ~] podman network connect --ip 10.10.100.81 netone hungry_chaplygin
 ```
 
-If we inspect the conatiner we can see it has three network attachments. One for podman, one for netone, and one for nettwo ( I have trunkcated the output to show only the network componants. )
+If we inspect the container we can see it has three network attachments. One for podman, one for netone, and one for nettwo ( I have truncated the output to show only the network components. )
 
-```
+```bash
 [root@localhost ~]# podman inspect hungry_chaplygin
 [
      {
@@ -206,24 +204,24 @@ If we inspect the conatiner we can see it has three network attachments. One for
 
 So let's do some testing. 
 
-```
+```bash
 [root@localhost ~]# podman exec -it hungry_chaplygin bash
 
 ```
 I have installed iputils so I can use ping to test some network connectivity. 
 
-```
+```bash
 [root@0a05716b8f5c /] dnf install iputils -y
 
 ```
 
-```
-[root@0a05716b8f5c /]# ping 10.10.100.1
+```bash
+[root@0a05716b8f5c /] ping 10.10.100.1
 PING 10.10.100.1 (10.10.100.1) 56(84) bytes of data.
 64 bytes from 10.10.100.1: icmp_seq=1 ttl=64 time=0.872 ms
 64 bytes from 10.10.100.1: icmp_seq=2 ttl=64 time=0.581 ms
 
-[root@0a05716b8f5c /]# ping 10.10.110.1
+[root@0a05716b8f5c /] ping 10.10.110.1
 PING 10.10.110.1 (10.10.110.1) 56(84) bytes of data.
 64 bytes from 10.10.110.1: icmp_seq=1 ttl=64 time=0.575 ms
 
@@ -232,8 +230,8 @@ As you can see I can ping the gateway for both networks.
 
 One thing to note here is if you look at iptables you will see a rule in for netavark to allow traffic through it. This is implemented when you create the network in podman and so far it only works with iptables. 
 
-```
-[root@localhost ~]# iptables -L
+```bash
+[root@localhost ~] iptables -L
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination
 
